@@ -20,3 +20,6 @@
 [submodule "edgex-compose"]
 	path = edgex-compose
 	url = https://github.com/edgexfoundry/edgex-compose
+[submodule "device-random"]
+	path = device-random
+	url = https://github.com/edgexfoundry/device-random.git
