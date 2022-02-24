@@ -26,6 +26,25 @@ sudo make install
 ldconfig -p | grep zmq
 ```
 
+### Install Redis
+```
+wget http://download.redis.io/redis-stable.tar.gz
+tar xvzf redis-stable.tar.gz
+cd redis-stable
+make
+```
+  
+### Install Consul
+```
+apt-get install consul
+```
+### Install docker
+```
+curl -fsSL https://get.docker.com -o get-docker.sh
+DRY_RUN=1 sh ./get-docker.sh
+```
+  
+  
   
 ### Installation and Execution
 EdgeX is organized as Go Modules; there is no requirement to set the GOPATH or GO111MODULE envrionment variables nor is there a requirement to root all the components under ~/go (or $GOPATH) and use the go get command. In other words,
