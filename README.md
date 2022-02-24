@@ -45,7 +45,15 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 DRY_RUN=1 sh ./get-docker.sh
 bash get_docker.sh
 ```
-  
+
+### install docker-compose
+
+```
+apt-get install -y libffi-dev libssl-dev python3-dev
+apt-get install -y python3 python3-pip
+pip3 install docker-compose
+
+```
   
   
 ### Installation and Execution
