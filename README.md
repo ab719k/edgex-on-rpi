@@ -38,10 +38,12 @@ make
 ```
 apt-get install consul
 ```
+  
 ### Install docker
 ```
 curl -fsSL https://get.docker.com -o get-docker.sh
 DRY_RUN=1 sh ./get-docker.sh
+bash get_docker.sh
 ```
   
   
