@@ -15,7 +15,7 @@ Several EdgeX Foundry services depend on ZeroMQ for communications by default. T
   Another option to build from source
 ```  
 sudo apt-get update && \
-sudo apt-get install -y libtool pkg-config build-essential autoconf automake uuid-dev
+sudo apt-get install -y libtool pkg-config build-essential autoconf automake uuid-dev cmake
 git clone https://github.com/zeromq/libzmq.git
 cd libzmq/
 git checkout v4.3.4
