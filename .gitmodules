@@ -8,3 +8,15 @@
 [submodule "edgex-go"]
 	path = edgex-go
 	url = https://github.com/edgexfoundry/edgex-go.git
+[submodule "edgex-cli"]
+	path = edgex-cli
+	url = http://github.com/edgexfoundry/edgex-cli.git
+[submodule "edgex-ui-go"]
+	path = edgex-ui-go
+	url = https://github.com/edgexfoundry/edgex-ui-go.git
+[submodule "app-service-configurable"]
+	path = app-service-configurable
+	url = https://github.com/edgexfoundry/app-service-configurable
+[submodule "edgex-compose"]
+	path = edgex-compose
+	url = https://github.com/edgexfoundry/edgex-compose
