@@ -7,7 +7,7 @@ Instructions to build EdgeX are available at EdgeXFoundry Github page [link](htt
 Prerequisites for building EdgeX, require instllation of following tools 
 
 ### Install go
-Download latest file [go1.17.7.linux-armv6l.tar.gz](https://go.dev/dl/go1.17.7.linux-armv6l.tar.gz)]. Download the latest  [go<version>.linux-armv6l.tar.gz](https://go.dev/dl/) at the Go downloads page. Refer to [go install information](https://go.dev/doc/install). The current targeted version of the Go language runtime for release artifacts is v1.17.x
+Latest version  [go1.17.7.linux-armv6l.tar.gz](https://go.dev/dl/go1.17.7.linux-armv6l.tar.gz) from the [downloads Page](https://go.dev/dl/). Refer to [go install information](https://go.dev/doc/install). The current targeted version of the Go language runtime for release artifacts is v1.17.x
 The minimum supported version of the Go language runtime is v1.17.x
 
 ### ZeroMQ
