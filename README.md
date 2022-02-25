@@ -105,16 +105,6 @@ edgexfoundry/support-scheduler            c1fb6d23c38d8e4135415aa828943646775f2b
 edgexfoundry/sys-mgmt-agent               0.0.0-dev                                  9ba3ae623077   13 minutes ago      268MB
 edgexfoundry/sys-mgmt-agent               c1fb6d23c38d8e4135415aa828943646775f2bb3   9ba3ae623077   13 minutes ago      268MB
 <none>                                    <none>                                     c29135b3fb3d   14 minutes ago      1.17GB
-<none>                                    <none>                                     65ab4348966d   15 minutes ago      1.17GB
-<none>                                    <none>                                     cdae25e70ab3   17 minutes ago      1.17GB
-<none>                                    <none>                                     f85bfb08005e   18 minutes ago      1.17GB
-<none>                                    <none>                                     763dde83110a   19 minutes ago      1.31GB
-<none>                                    <none>                                     26c1d14e6fef   About an hour ago   1.17GB
-<none>                                    <none>                                     0ded7a175826   About an hour ago   1.17GB
-<none>                                    <none>                                     11ca54160a68   About an hour ago   1.17GB
-<none>                                    <none>                                     690300bc8663   About an hour ago   1.17GB
-<none>                                    <none>                                     151c19b743aa   About an hour ago   1.31GB
-<none>                                    <none>                                     025b820a276a   11 hours ago        1.17GB
 edgexfoundry/support-notifications        0.0.0-dev                                  c3029202ce6f   11 hours ago        13.7MB
 edgexfoundry/support-notifications        c1fb6d23c38d8e4135415aa828943646775f2bb3   c3029202ce6f   11 hours ago        13.7MB
 <none>                                    <none>                                     7084ff5e20a2   11 hours ago        1.17GB
@@ -128,10 +118,43 @@ edgexfoundry/core-data                    c1fb6d23c38d8e4135415aa828943646775f2b
 golang                                    1.17-alpine3.15                            25233bb43442   6 days ago          296MB
 mazzolino/docker                          20                                         3c4003cbd4b0   6 weeks ago         193MB
 alpine                                    3.14                                       30a002f9ce29   3 months ago        3.83MB
-hello-world                               latest                                     1ec996c686eb   4 months ago        4.85kB
-
 ```
 
+You can remove all the big 1+GB files to save space
+```
+docker image rm <id>
+```
 
+# Steps to configrue docker-compose.yml
+Go to compose-builder folder 
+```
+cd edgex-compose/compose-builder
+sudo make gen no-secty dev
+```
+
+This will generate a docker-compose.yml file in the current directory. The docker file generated is already in the github with the modifications. Remove the lines containing ":z" flags for the volume bindings. This is only for non debian Linux distros. Additionally if you want to expose your microservices to the network other than the host change the IP address of the microservices from "127.0.0.1" to "0.0.0.0". Use the sed command for this purpose.
+```
+sed -i -e 's/127.0.0.1/0.0.0.0/g' docker-compose.yml
+```
+# Add random-integer
+
+
+# Add device virtual
+
+# Add app-service-configurable
+Add the add-asc-mqtt-export.yml and asc-mqtt-export.env for the MQTT forwarding to the broker.
+
+# Running the EdgeX docker
+Now run the docker-compose.yml file using the command 
+```
+sudo docker-compose -p edgex up -d
+```
+This might take a few minutes on the first run.
+
+Start and stop docker edgex commands
+```
+sudo docker-compose -p edgex up -d
+sudo docker-compose -p edgex down
+```
 
   
