@@ -48,12 +48,13 @@ services:
       DATABASE_HOST: edgex-redis
       EDGEX_PROFILE: sample
       EDGEX_SECURITY_SECRET_STORE: "false"
+      MESSAGEQUEUE_HOST: edgex-redis
       REGISTRY_HOST: edgex-core-consul
       SERVICE_HOST: edgex-app-sample
       TRIGGER_EDGEXMESSAGEBUS_PUBLISHHOST_HOST: edgex-redis
       TRIGGER_EDGEXMESSAGEBUS_SUBSCRIBEHOST_HOST: edgex-redis
       # Test MQTT
-      WRITABLE_PIPELINE_FUNCTIONS_MQTTEXPORT_PARAMETERS_TOPIC: IPSEdgeXEvents
+      WRITABLE_PIPELINE_FUNCTIONS_MQTTEXPORT_PARAMETERS_TOPIC: IPSEdgeXEventsA
       WRITABLE_PIPELINE_FUNCTIONS_MQTTSEND_ADDRESSABLE_ADDRESS: tcp://broker.mqttdashboard.com:1883
     hostname: edgex-app-sample
     image: edgexfoundry/app-service-configurable:0.0.0-dev
@@ -86,13 +87,13 @@ services:
       TRIGGER_EDGEXMESSAGEBUS_PUBLISHHOST_HOST: edgex-redis
       TRIGGER_EDGEXMESSAGEBUS_SUBSCRIBEHOST_HOST: edgex-redis
       WRITABLE_PIPELINE_FUNCTIONS_MQTTEXPORT_PARAMETERS_BROKERADDRESS: tcp://broker.mqttdashboard.com:1883
-      WRITABLE_PIPELINE_FUNCTIONS_MQTTEXPORT_PARAMETERS_TOPIC: IPSEdgeXEvents
+      WRITABLE_PIPELINE_FUNCTIONS_MQTTEXPORT_PARAMETERS_TOPIC: IPSEdgeXEventsB
     hostname: edgex-app-mqtt
     image: edgexfoundry/app-service-configurable:0.0.0-dev
     networks:
       edgex-network: {}
     ports:
-    - 127.0.0.1:59702:59702/tcp
+    - 0.0.0.0:59702:59702/tcp
     read_only: true
     security_opt:
     - no-new-privileges:true
