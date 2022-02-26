@@ -122,7 +122,8 @@ alpine                                    3.14                                  
 
 You can remove all the big 1+GB files to save space
 ```
-docker image rm <id>
+docker images -f "dangling=true" -q
+docker image rmi $(docker images -f "dangling=true" -q)
 ```
 
 # Steps to configrue docker-compose.yml
@@ -139,10 +140,43 @@ sed -i -e 's/127.0.0.1/0.0.0.0/g' docker-compose.yml
 # Add random-integer
 
 
-# Add device virtual
+# Add device-random-integer
+```
+cd device-random
+make docker
+edgexfoundry/device-random                0.0.0-dev                                  cb3a9e683630   2 days ago     16.4MB
+edgexfoundry/device-random                b4b7d92ebf9d87d8d84b804aa68b575b4f0789af   cb3a9e683630   2 days ago     16.4MB
+```
 
 # Add app-service-configurable
 Add the add-asc-mqtt-export.yml and asc-mqtt-export.env for the MQTT forwarding to the broker.
+```
+app-service-mqtt:
+    container_name: edgex-app-mqtt
+    depends_on:
+    - consul
+    - data
+    env_file:
+    - common.env
+    - as-common.env
+    - asc-mqtt-export.env
+    environment:
+      MESSAGEQUEUE_HOST: edgex-redis
+      REGISTRY_HOST: edgex-core-consul
+      SERVICE_HOST: edgex-app-mqtt
+      WRITABLE_PIPELINE_FUNCTIONS_MQTTEXPORT_PARAMETERS_BROKERADDRESS: tcp://broker.mqttdashboard.com:1883
+      WRITABLE_PIPELINE_FUNCTIONS_MQTTEXPORT_PARAMETERS_TOPIC: EdgeXEvents
+    hostname: edgex-app-mqtt
+    image: edgexfoundry/app-service-configurable:0.0.0-dev
+    networks:
+      edgex-network: {}
+    ports:
+    - 0.0.0.0:59702:59702/tcp
+    read_only: true
+    security_opt:
+    - no-new-privileges:true
+    user: 2002:2001
+```
 
 # Running the EdgeX docker
 Now run the docker-compose.yml file using the command 
