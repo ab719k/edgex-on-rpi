@@ -218,7 +218,8 @@ golang                                    1.16-alpine3.12                       
 
 Running EdgeX
 
-`root@raspberrypi:~/edgex-on-rpi# docker-compose -p edgex up -d
+```
+root@raspberrypi:~/edgex-on-rpi# docker-compose -p edgex up -d
 Creating edgex-ui-go       ... done
 Creating edgex-redis       ... done
 Creating edgex-core-consul ... done
