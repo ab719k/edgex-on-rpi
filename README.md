@@ -216,7 +216,9 @@ alpine                                    3.14                                  
 golang                                    1.16-alpine3.12                            4a431095cd91   8 months ago   280MB
 ```
 
-Running EdgeX
+#Running EdgeX
+
+## Starting Edgex
 
 ```
 root@raspberrypi:~/edgex-on-rpi# docker-compose -p edgex up -d
@@ -233,6 +235,10 @@ Creating edgex-app-rules-engine      ... done
 Creating edgex-app-mqtt              ... done
 Creating edgex-sys-mgmt-agent        ... done
 Creating edgex-device-random         ... done
+```
+
+## Listing EdgeX container that are running
+```
 root@raspberrypi:~/edgex-on-rpi# docker ps
 CONTAINER ID   IMAGE                                             COMMAND                  CREATED         STATUS         PORTS                                                                                         NAMES
 06cfac3722ea   edgexfoundry/sys-mgmt-agent:0.0.0-dev             "/sys-mgmt-agent -cp…"   2 minutes ago   Up 2 minutes   0.0.0.0:58890->58890/tcp                                                                      edgex-sys-mgmt-agent
@@ -248,6 +254,10 @@ ce6153e120f0   lfedge/ekuiper:1.4.0-slim                         "/usr/bin/docke
 5fe40fe3001a   consul:1.10                                       "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes   8300-8302/tcp, 8301-8302/udp, 8600/tcp, 8600/udp, 0.0.0.0:8500->8500/tcp, :::8500->8500/tcp   edgex-core-consul
 be46c1877c4e   redis:6.2-alpine                                  "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes   0.0.0.0:6379->6379/tcp                                                                        edgex-redis
 2aae848f3781   edgexfoundry/edgex-ui:0.0.0-dev                   "./edgex-ui-server -…"   2 minutes ago   Up 2 minutes   0.0.0.0:4000->4000/tcp, :::4000->4000/tcp                                                     edgex-ui-go
+```
+
+## Stoping EdgeX services
+```
 root@raspberrypi:~/edgex-on-rpi# docker-compose -p edgex down
 Stopping edgex-sys-mgmt-agent        ... done
 Stopping edgex-device-random         ... done
@@ -276,6 +286,4 @@ Removing edgex-core-consul           ... done
 Removing edgex-redis                 ... done
 Removing edgex-ui-go                 ... done
 Removing network edgex_edgex-network
-``
-
 ```
